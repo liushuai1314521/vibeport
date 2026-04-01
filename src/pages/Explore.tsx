@@ -7,7 +7,7 @@ import { ProductCard, Product } from "../components/ProductCard";
 import { Badge } from "../components/Badge";
 import { useFirebase } from "../contexts/FirebaseContext";
 
-const TAGS = ["All", "AI", "DevTools", "Design", "Productivity", "Music", "Health", "Team"];
+const TAGS = ["All", "AI", "DevTools", "Design", "Productivity", "Music", "Health", "Team", "Games"];
 
 export const Explore = () => {
   const { products, getProducts } = useFirebase();

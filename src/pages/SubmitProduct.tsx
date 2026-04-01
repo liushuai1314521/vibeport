@@ -209,7 +209,7 @@ export const SubmitProduct = () => {
                   <div className="space-y-3">
                     <label className="text-xs font-medium uppercase tracking-wider text-zinc-500">Tags</label>
                     <div className="flex flex-wrap gap-2">
-                      {["AI", "Web3", "SaaS", "DevTools", "Design", "Productivity", "Health", "Social", "Vibe"].map(tag => (
+                      {["AI", "Web3", "SaaS", "DevTools", "Design", "Productivity", "Health", "Social", "Vibe", "Games"].map(tag => (
                         <button
                           key={tag}
                           onClick={() => {
