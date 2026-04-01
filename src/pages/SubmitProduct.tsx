@@ -104,7 +104,7 @@ export const SubmitProduct = () => {
         name: formData.name,
         tagline: formData.tagline,
         description: formData.description || "No description provided.",
-        idea_story: formData.idea_story || "No introduction provided.",
+        idea_story: formData.idea_story || "No story provided.",
         website_url: formData.url,
         cover_image_url: formData.cover_image || `https://picsum.photos/seed/${encodeURIComponent(formData.name)}/1200/600`,
         tags: formData.tags,
@@ -130,7 +130,7 @@ export const SubmitProduct = () => {
       <div className="relative">
         {/* Progress Bar */}
         <div className="absolute -top-8 left-0 w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
-          <motion.div 
+          <motion.div
             className="h-full bg-violet-500"
             initial={{ width: "0%" }}
             animate={{ width: `${(step / 3) * 100}%` }}
@@ -152,9 +152,9 @@ export const SubmitProduct = () => {
                   value={formData.url}
                   onChange={(e) => setFormData({ ...formData, url: e.target.value })}
                 />
-                <Button 
-                  className="w-full h-14" 
-                  onClick={handleExtract} 
+                <Button
+                  className="w-full h-14"
+                  onClick={handleExtract}
                   isLoading={loading}
                   disabled={!formData.url}
                 >
@@ -174,7 +174,7 @@ export const SubmitProduct = () => {
                   <Sparkles className="h-5 w-5" />
                   <h2 className="font-bold uppercase tracking-widest text-xs">Step 2: The Details</h2>
                 </div>
-                
+
                 <div className="grid grid-cols-1 gap-6">
                   <Input
                     label="Product Name"
@@ -190,7 +190,7 @@ export const SubmitProduct = () => {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="text-xs font-medium uppercase tracking-wider text-zinc-500">What it does (Description)</label>
-                      <button 
+                      <button
                         onClick={handlePolishDescription}
                         disabled={loading || !formData.description}
                         className="text-[10px] font-bold uppercase tracking-widest text-violet-400 hover:text-violet-300 flex items-center gap-1 disabled:opacity-50"
@@ -205,7 +205,7 @@ export const SubmitProduct = () => {
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     />
                   </div>
-                  
+
                   <div className="space-y-3">
                     <label className="text-xs font-medium uppercase tracking-wider text-zinc-500">Tags</label>
                     <div className="flex flex-wrap gap-2">
@@ -245,26 +245,29 @@ export const SubmitProduct = () => {
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-8">
             <Card className="p-8">
               <div className="space-y-6">
-                <div className="flex items-center gap-3 text-violet-400 mb-2">
-                  <Rocket className="h-5 w-5" />
-                  <h2 className="font-bold uppercase tracking-widest text-xs">Step 3: The Soul</h2>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <label className="text-xs font-medium uppercase tracking-wider text-zinc-500">Product Introduction</label>
-                    <button 
+                <div className="flex justify-between items-center gap-3 text-violet-400 mb-4">
+                  <div className="flex items-center gap-2">
+                    <Rocket className="h-5 w-5" />
+                    <h2 className="font-bold uppercase tracking-widest text-xs">Step 3: The Story Behind the Vibe</h2>
+                    <div className="flex items-center justify-between">
+                    </div>
+                  </div>
+
+                    <button
                       onClick={handlePolishStory}
                       disabled={loading || !formData.idea_story}
-                      className="text-[10px] font-bold uppercase tracking-widest text-violet-400 hover:text-violet-300 flex items-center gap-1 disabled:opacity-50"
+                      className="text-[10px] font-bold uppercase tracking-widest text-violet-400 flex items-center gap-1 hover:cursor-pointer"
                     >
                       <Wand2 className="h-3 w-3" />
                       Polish with AI
                     </button>
-                  </div>
+                </div>
+
+                <div className="space-y-4">
+
                   <Input
                     multiline
-                    placeholder="I built this because I found traditional apps too static..."
+                    placeholder="hat inspired you? Share the journey, the grind, and the wins."
                     value={formData.idea_story}
                     onChange={(e) => setFormData({ ...formData, idea_story: e.target.value })}
                     className="min-h-[200px]"
@@ -272,56 +275,56 @@ export const SubmitProduct = () => {
                 </div>
 
                 <div className="space-y-4">
-                   <label className="text-xs font-medium uppercase tracking-wider text-zinc-500">Cover Image</label>
-                   <div className="grid grid-cols-1 gap-4">
-                     <Input
-                       placeholder="Or paste an image URL here..."
-                       value={formData.cover_image}
-                       onChange={(e) => setFormData({ ...formData, cover_image: e.target.value })}
-                     />
-                     <div 
-                       onClick={() => document.getElementById('file-upload')?.click()}
-                       className="aspect-video w-full rounded-2xl border-2 border-dashed border-zinc-800 flex flex-col items-center justify-center gap-3 hover:border-violet-500/30 transition-all cursor-pointer group overflow-hidden bg-zinc-900/50 relative"
-                     >
-                        <input 
-                          id="file-upload"
-                          type="file" 
-                          className="hidden" 
-                          accept="image/*"
-                          onChange={handleFileChange}
+                  <label className="text-xs font-medium uppercase tracking-wider text-zinc-500">Cover Image</label>
+                  <div className="grid grid-cols-1 gap-4">
+                    <Input
+                      placeholder="Or paste an image URL here..."
+                      value={formData.cover_image}
+                      onChange={(e) => setFormData({ ...formData, cover_image: e.target.value })}
+                    />
+                    <div
+                      onClick={() => document.getElementById('file-upload')?.click()}
+                      className="aspect-video w-full rounded-2xl border-2 border-dashed border-zinc-800 flex flex-col items-center justify-center gap-3 hover:border-violet-500/30 transition-all cursor-pointer group overflow-hidden bg-zinc-900/50 relative"
+                    >
+                      <input
+                        id="file-upload"
+                        type="file"
+                        className="hidden"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                      />
+
+                      {uploading ? (
+                        <div className="flex flex-col items-center gap-2">
+                          <Loader2 className="h-8 w-8 text-violet-500 animate-spin" />
+                          <p className="text-xs text-zinc-500">Uploading to VibePort...</p>
+                        </div>
+                      ) : formData.cover_image ? (
+                        <img
+                          src={formData.cover_image}
+                          className="h-full w-full object-cover"
+                          alt="Preview"
+                          referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = `https://picsum.photos/seed/${encodeURIComponent(formData.name)}/1200/600`;
+                          }}
                         />
-                        
-                        {uploading ? (
-                          <div className="flex flex-col items-center gap-2">
-                            <Loader2 className="h-8 w-8 text-violet-500 animate-spin" />
-                            <p className="text-xs text-zinc-500">Uploading to VibePort...</p>
+                      ) : (
+                        <>
+                          <div className="h-12 w-12 rounded-full bg-zinc-900 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <ImageIcon className="h-6 w-6 text-zinc-600" />
                           </div>
-                        ) : formData.cover_image ? (
-                          <img 
-                            src={formData.cover_image} 
-                            className="h-full w-full object-cover" 
-                            alt="Preview" 
-                            referrerPolicy="no-referrer"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.src = `https://picsum.photos/seed/${encodeURIComponent(formData.name)}/1200/600`;
-                            }}
-                          />
-                        ) : (
-                          <>
-                            <div className="h-12 w-12 rounded-full bg-zinc-900 flex items-center justify-center group-hover:scale-110 transition-transform">
-                              <ImageIcon className="h-6 w-6 text-zinc-600" />
-                            </div>
-                            <p className="text-xs text-zinc-500">Click to upload or drag and drop</p>
-                          </>
-                        )}
-                     </div>
-                   </div>
+                          <p className="text-xs text-zinc-500">Click to upload or drag and drop</p>
+                        </>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex gap-4 pt-4">
                   <Button variant="secondary" className="flex-1" onClick={() => setStep(2)}>Back</Button>
-                  <Button 
+                  <Button
                     className="flex-[2] h-14 bg-gradient-to-r from-violet-600 to-cyan-600 border-none"
                     onClick={handleSubmit}
                     isLoading={loading}

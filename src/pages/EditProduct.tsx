@@ -227,7 +227,7 @@ export const EditProduct = () => {
             <Card className="p-8 space-y-6 bg-zinc-900/50 border-zinc-800">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium text-zinc-400">Product Introduction</label>
+                  <label className="text-sm font-medium text-zinc-400">The Idea Story</label>
                   <Button 
                     variant="ghost" 
                     size="sm" 

@@ -103,7 +103,7 @@ export const ProductDetail = () => {
           <section className="space-y-6">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-violet-400" />
-              Product Introduction
+              The Idea Story
             </h2>
             <Card className="p-8 bg-zinc-900/30 border-violet-500/10">
               <p className="text-lg text-zinc-300 leading-relaxed italic">
