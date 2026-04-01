@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Public profile information for a maker.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the maker" },
+        "username": { "type": "string", "description": "Unique handle" },
+        "avatar_url": { "type": "string", "description": "URL to profile picture" },
+        "bio": { "type": "string", "description": "Short biography" },
+        "website": { "type": "string", "description": "Personal website URL" },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "username"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A project or product shared by a maker.",
+      "type": "object",
+      "properties": {
+        "user_id": { "type": "string", "description": "UID of the maker" },
+        "name": { "type": "string", "description": "Product name" },
+        "tagline": { "type": "string", "description": "One-line pitch" },
+        "description": { "type": "string", "description": "Detailed features" },
+        "idea_story": { "type": "string", "description": "The inspiration behind the build" },
+        "cover_image_url": { "type": "string", "description": "Main showcase image" },
+        "website_url": { "type": "string", "description": "Link to the product" },
+        "app_store_url": { "type": "string", "description": "Optional App Store link" },
+        "status": { "type": "string", "enum": ["draft", "published", "archived", "deleted"] },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "boost_count": { "type": "integer", "description": "Number of community boosts" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["user_id", "name", "tagline", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles indexed by UID"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Public products"
+    }
+  }
+}
